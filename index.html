@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todo list</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <div id="whole-page-div">
+        <div id="header">
+          <div id="header-grid"></div>
+          <div id="create">+</div>
+        </div>
+        <div id="list-body">
+          <div id="default">
+            <p>
+              There are no projects currently. Please create one.
+            </p>
+          </div>
+          <form onsubmit="return false;" id="form">
+            <ul>
+              <li>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title_input" />
+              </li>
+              <li>
+                <label for="desc">Description:</label>
+                <textarea id="desc" name="desc_input">
+Describe the project..</textarea
+                >
+              </li>
+              <li>
+                <label for="status">Status:</label>
+                <select id="status" name="status_input">
+                  <option value="Created">Started</option>
+                  <option value="In progress">In progress</option>
+                  <option value="completed">Completed</option>
+                </select>
+              </li>
+              <li id="submit_task">
+                <button type="submit" id="submitForm">
+                  Create project
+                </button>
+              </li>
+            </ul>
+          </form>
+          <div id="projectDashboard"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="src/index.js"></script>
+  </body>
+</html>
