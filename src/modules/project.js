@@ -2,24 +2,13 @@ const projectsParent = document.getElementById("projects-navbar");
 const body = document.getElementById("body");
 
 function createProject(title, importance, description, created) {
-  let proj = new Project(
-    title,
-    [
-      { title: "complete task abcdef 1234" },
-      { title: "complete task abcefdegf 1231823123" },
-      { title: "compelte tasks 12391231923 dfjsidfisdjf" }
-    ],
-    importance,
-    description,
-    created
-  );
+  let proj = new Project(title, [], importance, description, created);
 
   let post = proj.createNavProject();
 
   projectsParent.appendChild(post);
 
   proj.createProjectWindow();
-  proj.addNewTask();
 
   // Check tasks off when clicking checkbox
   let checks = document.querySelectorAll("input[type='checkbox']");
@@ -54,6 +43,13 @@ class Project {
     let navProject = document.createElement("div");
     navProject.className = "nav-project";
 
+    navProject.addEventListener("click", () => {
+      let other = document.getElementById("body");
+      other.innerHTML = " ";
+
+      this.createProjectWindow();
+    });
+
     let title = document.createElement("p");
     title.className = "project-title";
     title.innerHTML = this.title;
@@ -64,6 +60,9 @@ class Project {
 
     let tasksContainer = document.createElement("div");
     tasksContainer.className = "tasks";
+    if (this.tasks.length < 1) {
+      tasksContainer.classList += " hidden";
+    }
 
     for (let i = 0; i < this.tasks.length; i++) {
       let taskDiv = document.createElement("div");
@@ -143,9 +142,7 @@ class Project {
     taskList.appendChild(addNewTaskDD);
 
     if (this.tasks.length === 0) {
-      let emptyTasks = document.createElement("dd");
-      emptyTasks.innerHTML = "There are no current tasks on this project.";
-      taskList.appendChild(emptyTasks);
+      console.log("No tasks");
     } else {
       for (let i = 0; i < this.tasks.length; i++) {
         let taskDD = document.createElement("dd");
@@ -170,6 +167,8 @@ class Project {
 
     projectDiv.appendChild(taskList);
     body.appendChild(projectDiv);
+
+    this.addNewTask();
   }
   addNewTask() {
     const addTask = document.querySelector(".addNew");
