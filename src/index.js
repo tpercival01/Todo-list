@@ -1,5 +1,5 @@
-import * as Calendar from "./modules/calender";
-import * as createProject from "./modules/project";
+import * as Calendar from "./modules/calendar.js";
+import * as createProject from "./modules/project.js";
 
 Calendar.handleCalendar("start");
 
