@@ -1,6 +1,8 @@
 import * as Calendar from "./modules/calender";
 import * as createProject from "./modules/project";
 
+Calendar.handleCalendar("start");
+
 const today = new Date();
 
 const createProjectButton = document.getElementById("create-project");
@@ -22,3 +24,7 @@ postProjectForm.addEventListener("submit", (e) => {
     today.toLocaleString()
   );
 });
+
+let todayNum = today.getDate();
+let todayCal = document.getElementById(todayNum);
+todayCal.style.background = "red";
