@@ -1,4 +1,3 @@
-
 const today = new Date();
 const month = today.toLocaleString("default", { month: "long" });
 
@@ -88,6 +87,7 @@ function createDays(calendarDiv) {
     let div = document.createElement("div");
     div.className = "col ";
     div.classList += i;
+    div.id = i;
 
     if (i <= monthLength) {
       div.innerHTML = i;
@@ -100,4 +100,4 @@ function createDays(calendarDiv) {
   calendarDiv.appendChild(calendarDays);
 }
 
-handleCalendar("start");
+export { handleCalendar };
